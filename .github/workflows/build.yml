@@ -1,0 +1,17 @@
+name: Build sysext
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    continue-on-error: false
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup-mkosi
+        uses: systemd/mkosi@v24.3
+      - run: mkosi -f
