@@ -24,7 +24,7 @@ setup:
         fi
     done < <(podman container ls --all --format '{{{{.Names}}')
     container=$(buildah from fedora)
-    buildah run "$container" -- dnf install -y \
+    buildah run "$container" -- dnf install --setopt=install_weak_deps=False -y \
         git \
         /usr/bin/mkfs.erofs \
         /usr/share/distribution-gpg-keys \
