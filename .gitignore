@@ -1,3 +1,4 @@
 /mkosi.cache/*
-/mkosi.images/*
 /mkosi.output/*
+mkosi.key
+mkosi.crt
