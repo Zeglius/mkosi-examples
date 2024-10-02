@@ -1,0 +1,12 @@
+name: "Hello world"
+description: aaaa
+inputs:
+  who:
+    description: "Name of the person to greet"
+    required: true
+    default: "John"
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.who }}
