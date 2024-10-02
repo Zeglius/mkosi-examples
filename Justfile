@@ -36,5 +36,8 @@ setup:
         systemd-ukify \
         zstd
     buildah copy "$container" /etc/sub{u,g}id /etc
+    buildah run "$container" bash <<-'EOF'
+        echo 'export PATH={{ justfile_directory() }}/mkosi-git/bin:$PATH' > /etc/profile.d/mkosi.sh
+    EOF
     buildah commit --rm "$container" {{ IMG_NAME }}
     distrobox create --init --image {{ IMG_NAME }} --name {{ CONTAINER_NAME }}
